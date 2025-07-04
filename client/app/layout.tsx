@@ -6,7 +6,7 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Ahibi 3.0 - Next-Gen Event Management",
+  title: "Ahibi - Next-Gen Event Management",
   description: "Mobile-first ticketing and event management ecosystem for seamless event experiences",
     generator: 'v0.dev'
 }

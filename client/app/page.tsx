@@ -1,9 +1,23 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Calendar, MapPin, Music, Building2, Users, Ticket, ArrowRight } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  Calendar,
+  MapPin,
+  Music,
+  Building2,
+  Users,
+  Ticket,
+  ArrowRight,
+} from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function HomePage() {
   const featuredEvents = [
@@ -37,19 +51,21 @@ export default function HomePage() {
       image: "/placeholder.svg?height=200&width=300",
       tags: ["Technology", "Conference", "Networking"],
     },
-  ]
+  ];
 
   const userRoles = [
     {
       title: "Event Organizer",
-      description: "Create and manage events, track bookings, and handle payments",
+      description:
+        "Create and manage events, track bookings, and handle payments",
       icon: Calendar,
       href: "/organizer",
       color: "bg-blue-500",
     },
     {
       title: "Artist",
-      description: "Showcase your talent, manage bookings, and connect with organizers",
+      description:
+        "Showcase your talent, manage bookings, and connect with organizers",
       icon: Music,
       href: "/artist",
       color: "bg-purple-500",
@@ -68,36 +84,62 @@ export default function HomePage() {
       href: "/admin",
       color: "bg-red-500",
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+      <header className="w-full py-4 flex justify-center bg-transparent sticky top-0 z-50">
+        <nav className="flex items-center justify-between px-6 py-2 rounded-full bg-[#0F172A] w-full max-w-6xl shadow-md">
+          {/* Logo */}
           <div className="flex items-center space-x-2">
-            <Ticket className="h-8 w-8 text-primary" />
-            <span className="text-2xl font-bold">Ahibi 3.0</span>
+            <img
+              src="/images/Logo.png"
+              alt="Ahibi logo"
+              className="h-10 w-auto object-contain"
+            />
           </div>
-          <div className="flex items-center space-x-4">
-            <Button variant="ghost" asChild>
-              <Link href="/events">Browse Events</Link>
-            </Button>
-            <Button asChild>
-              <Link href="/auth">Login</Link>
-            </Button>
+
+          {/* Navigation Links */}
+          <div className="hidden md:flex space-x-6 text-gray-300 font-medium">
+            <Link href="/events" className="hover:text-white transition">
+              Events
+            </Link>
+            <Link href="/organizer" className="hover:text-white transition">
+              Organize
+            </Link>
+            <Link href="/artist" className="hover:text-white transition">
+              Artists
+            </Link>
+            <Link href="/venue" className="hover:text-white transition">
+              Venues
+            </Link>
+            <Link href="/about" className="hover:text-white transition">
+              About
+            </Link>
+            <Link href="/blog" className="hover:text-white transition">
+              Blog
+            </Link>
           </div>
-        </div>
+
+          {/* Action Buttons */}
+          <div className="flex space-x-3">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-medium">
+              Login
+            </button>
+          </div>
+        </nav>
       </header>
 
       {/* Hero Section */}
-      <section className="py-12 md:py-20 bg-gradient-to-br from-primary/10 via-background to-secondary/10">
+      <section className="py-12 md:py-20 ">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             Next-Gen Event Management
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Discover events, book artists, manage venues, and create unforgettable experiences with Ahibi 3.0
+            Discover events, book artists, manage venues, and create
+            unforgettable experiences with Ahibi
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild>
@@ -123,7 +165,10 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredEvents.map((event) => (
-              <Card key={event.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+              <Card
+                key={event.id}
+                className="overflow-hidden hover:shadow-lg transition-shadow"
+              >
                 <div className="relative">
                   <Image
                     src={event.image || "/placeholder.svg"}
@@ -133,7 +178,9 @@ export default function HomePage() {
                     className="w-full h-48 object-cover"
                   />
                   <div className="absolute top-4 left-4">
-                    <Badge className="bg-white/90 text-black">{event.price}</Badge>
+                    <Badge className="bg-white/90 text-black">
+                      {event.price}
+                    </Badge>
                   </div>
                 </div>
                 <CardHeader>
@@ -170,13 +217,20 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Join as</h2>
-            <p className="text-lg text-muted-foreground">Choose your role and start your journey with Ahibi 3.0</p>
+            <p className="text-lg text-muted-foreground">
+              Choose your role and start your journey with Ahibi
+            </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {userRoles.map((role) => (
-              <Card key={role.title} className="text-center hover:shadow-lg transition-shadow">
+              <Card
+                key={role.title}
+                className="text-center hover:shadow-lg transition-shadow"
+              >
                 <CardHeader>
-                  <div className={`w-16 h-16 ${role.color} rounded-full flex items-center justify-center mx-auto mb-4`}>
+                  <div
+                    className={`w-16 h-16 ${role.color} rounded-full flex items-center justify-center mx-auto mb-4`}
+                  >
                     <role.icon className="h-8 w-8 text-white" />
                   </div>
                   <CardTitle>{role.title}</CardTitle>
@@ -198,19 +252,27 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">10K+</div>
+              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
+                10K+
+              </div>
               <div className="text-muted-foreground">Events Hosted</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">5K+</div>
+              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
+                5K+
+              </div>
               <div className="text-muted-foreground">Artists</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">2K+</div>
+              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
+                2K+
+              </div>
               <div className="text-muted-foreground">Venues</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">100K+</div>
+              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
+                100K+
+              </div>
               <div className="text-muted-foreground">Happy Users</div>
             </div>
           </div>
@@ -224,10 +286,11 @@ export default function HomePage() {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Ticket className="h-6 w-6 text-primary" />
-                <span className="text-xl font-bold">Ahibi 3.0</span>
+                <span className="text-xl font-bold">Ahibi</span>
               </div>
               <p className="text-muted-foreground">
-                Next-generation event management ecosystem for seamless event experiences.
+                Next-generation event management ecosystem for seamless event
+                experiences.
               </p>
             </div>
             <div>
@@ -292,10 +355,10 @@ export default function HomePage() {
             </div>
           </div>
           <div className="border-t mt-8 pt-8 text-center text-muted-foreground">
-            <p>&copy; 2024 Ahibi 3.0. All rights reserved.</p>
+            <p>&copy; 2024 Ahibi. All rights reserved.</p>
           </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }

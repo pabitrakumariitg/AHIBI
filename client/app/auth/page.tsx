@@ -43,7 +43,7 @@ export default function AuthPage() {
         <CardHeader className="text-center">
           <div className="flex items-center justify-center mb-4">
             <Ticket className="h-8 w-8 text-primary mr-2" />
-            <span className="text-2xl font-bold">Ahibi 3.0</span>
+            <span className="text-2xl font-bold">Ahibi</span>
           </div>
           <CardTitle>
             {step === "phone" && "Welcome Back"}
